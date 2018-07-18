@@ -79,21 +79,6 @@ export const serverReturnsNetworkError = () => {
  */
 export const flushPromises = () => new Promise(resolve => setImmediate(resolve))
 
-export const indexAndCollect = (collection: { id: number }[]): [{ [number] }, { id: number }[]] => (
-  [indexById(collection), collection]
-)
-
-/**
- * Useful for when you want to make assertions about actions that are made, but aren't that concerned
- * about their arguments.
- */
-export const actionTypes = map(prop('type'))
-
-/**
- * Okay, so this sucks, and also the collect function can be useful, but we need to break out the typings
- * into separate functions based on the length of the tuple being returned, because Flow is not perfect.
- * If we don't do it this way, we lose typing, which isn't the end of the world but is kind of sad.
- */
 export const collect = (...vals) => [vals, ...vals]
 
 export const sleep = async timeInMs => new Promise(res => setTimeout(res, timeInMs))
