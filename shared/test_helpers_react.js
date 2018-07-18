@@ -1,4 +1,5 @@
 import React from 'react'
+import { flushPromises } from './test_helpers'
 
 /**
  * Simulates a click on the Enzyme wrapper and provides along useful stubs for common SyntheticEvent

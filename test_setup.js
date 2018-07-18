@@ -1,6 +1,8 @@
 // setup file
+import util from 'util'
 import { configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import { last } from './shared/ramda_loader'
 
 configure({ adapter: new Adapter() })
 
