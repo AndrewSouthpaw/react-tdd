@@ -1,0 +1,35 @@
+{
+  "name": "hrr-tdd-react-talk-july-2018",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018.git"
+  },
+  "author": "Andrew Smith <andrewsmith@alumni.stanford.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018/issues"
+  },
+  "homepage": "https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.2.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.3.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "regenerator-runtime": "^0.12.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
