@@ -1,5 +1,18 @@
 import React from 'react'
+import { mount } from 'enzyme'
 import { flushPromises } from './test_helpers'
+
+export const setupMount = (Component, defaultProps) => (props = {}) => (
+  mount(<Component {...defaultProps()} {...props} />)
+)
+
+export const setupMountReduxComponent = (Component, defaultProps) => (store, props = {}) => (
+  mount(
+    <Provider store={store}>
+      <Component {...defaultProps()} {...props} />
+    </Provider>,
+  )
+)
 
 /**
  * Simulates a click on the Enzyme wrapper and provides along useful stubs for common SyntheticEvent
