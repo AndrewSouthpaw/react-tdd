@@ -1,5 +1,5 @@
 {
-  "name": "hrr-tdd-react-talk-july-2018",
+  "name": "react-redux-tdd",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018.git"
+    "url": "git+https://github.com/AndrewSouthpaw/react-redux-tdd.git"
   },
   "author": "Andrew Smith <andrewsmith@alumni.stanford.edu>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018/issues"
+    "url": "https://github.com/AndrewSouthpaw/react-redux-tdd/issues"
   },
-  "homepage": "https://github.com/AndrewSouthpaw/hrr-tdd-react-talk-july-2018#readme",
+  "homepage": "https://github.com/AndrewSouthpaw/react-redux-tdd#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
