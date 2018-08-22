@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { curry } from './ramda_loader'
+import { curry, union, keys, reduce, equals, assoc } from './ramda_loader'
 import sinon from 'sinon'
 
 let id = 0
@@ -16,12 +16,15 @@ export function passThrough(a) { return a }
 export const sel = curry((dataTestId, wrapper) => wrapper.find(`[data-test="${dataTestId}"]`))
 
 /**
- * Expects the two objects only differ by the keys specified, and returns those keys in an object for further
- * inspection.
+ * Takes the difference between two objects. Does not accommodate deep diffing.
  */
-export const onlyDiff = (lhs, rhs, ...keys) => {
-  expect(omit(keys, lhs)).toEqual(omit(keys, rhs))
-  return pickAll(keys, rhs)
+export const diff = (lhs, rhs) => {
+  const ks = union(keys(lhs), keys(rhs))
+  return reduce(
+    (acc, k) => (equals(lhs[k], rhs[k]) ? acc : assoc(k, rhs[k], acc)),
+    {},
+    ks,
+  )
 }
 
 /**
@@ -72,6 +75,13 @@ export const serverReturnsFailure = (data) => { // eslint-disable-line arrow-par
 
 export const serverReturnsNetworkError = () => {
   serverReturns(Promise.reject({ message: 'Network Error' }))
+}
+
+export const resetApiHistory = () => {
+  axios.get.resetHistory()
+  axios.post.resetHistory()
+  axios.put.resetHistory()
+  axios.delete.resetHistory()
 }
 
 /**
