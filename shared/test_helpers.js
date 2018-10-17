@@ -32,7 +32,7 @@ export const diff = (lhs, rhs) => {
  * for the beforeEach and afterEach blocks.
  */
 export const setupSandbox = (cb) => {
-  global.sandbox = sinon.sandbox.create()
+  global.sandbox = sinon.createSandbox()
 
   beforeEach(() => {
     // always stub the server just in case
