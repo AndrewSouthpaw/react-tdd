@@ -2,15 +2,32 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { flushPromises } from './test_helpers'
 
+/**
+ * The FakeProvider allows you to pass props into your enzyme wrapper through `.setProps()` for a
+ * component that is redux-connected and have those props appear in the actual component that you're
+ * interested in; it passes its props to the child that it wraps. Without it, actions done with
+ * `wrapper.setProps()` will not correctly pass along the props to the component that you're testing.
+ */
+class FakeProvider extends React.Component {
+  render() {
+    const { children, store, ...rest } = this.props // eslint-disable-line react/prop-types
+    return (
+      <Provider store={store}>
+        {React.cloneElement(children, { ...rest })}
+      </Provider>
+    )
+  }
+}
+
 export const setupMount = (Component, defaultProps) => (props = {}) => (
   mount(<Component {...defaultProps()} {...props} />)
 )
 
 export const setupMountReduxComponent = (Component, defaultProps) => (store, props = {}) => (
   mount(
-    <Provider store={store}>
+    <FakeProvider store={store}>
       <Component {...defaultProps()} {...props} />
-    </Provider>,
+    </FakeProvider>,
   )
 )
 
