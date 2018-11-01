@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-tdd",
+  "name": "react-tdd",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndrewSouthpaw/react-redux-tdd.git"
+    "url": "git+https://github.com/AndrewSouthpaw/react-tdd.git"
   },
   "author": "Andrew Smith <andrewsmith@alumni.stanford.edu>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AndrewSouthpaw/react-redux-tdd/issues"
+    "url": "https://github.com/AndrewSouthpaw/react-tdd/issues"
   },
-  "homepage": "https://github.com/AndrewSouthpaw/react-redux-tdd#readme",
+  "homepage": "https://github.com/AndrewSouthpaw/react-tdd#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
