@@ -1,5 +1,7 @@
 # react-tdd
 
+React testing utilities and education about React TDD.
+
 Test Driven Development (TDD) is widely regarded as an effective and scalable approach to software design, but its adoption has stagnated in React. Writing useful frontend tests for real-world codebases turns out to be quite hard.
 
 There's a two-fold purpose for `react-tdd`:
