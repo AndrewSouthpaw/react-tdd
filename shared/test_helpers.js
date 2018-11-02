@@ -13,7 +13,19 @@ export const noop = (...args) => {}
  */
 export function passThrough(a) { return a }
 
-export const sel = curry((dataTestId, wrapper) => wrapper.find(`[data-test="${dataTestId}"]`))
+/**
+ * Allows you to select a node by its `data-test-id` attribute. Example usage:
+ *
+ *    const myButton = sel('my-button', w)
+ *
+ * It is curried so you can create a higher order named selector for convenience:
+ *
+ *    const myButton = sel('my-button')
+ *    expect(myButton(w).text()).toEqual('I am a button')
+ *    myButton(w).simulate('click')
+ *    // ... etc.
+ */
+export const sel = curry((dataTestId, wrapper) => wrapper.find(`[data-test-id="${dataTestId}"]`))
 
 /**
  * Takes the difference between two objects. Does not accommodate deep diffing.
@@ -28,7 +40,7 @@ export const diff = (lhs, rhs) => {
 }
 
 /**
- * Convenience function. Takes a cb which contains setup for the sandbox, and does the appropriate setup with Mocha
+ * Convenience function. Takes a cb which contains setup for the sandbox, and does the appropriate setup
  * for the beforeEach and afterEach blocks.
  */
 export const setupSandbox = (cb) => {
@@ -60,7 +72,7 @@ const serverReturns = (promise) => {
 }
 
 /**
- * Helper functions to set up a mock server call. Returns the object passed in so you can store it
+ * Helper functions to set up a mock server response. Returns the object passed in so you can store it
  * inline and write expectations about it.
  */
 export const serverReturnsSuccess = (data) => { // eslint-disable-line arrow-parens
@@ -87,7 +99,7 @@ export const resetApiHistory = () => {
 /**
  * From: https://github.com/facebook/jest/issues/2157#issuecomment-279171856
  */
-export const flushPromises = () => new Promise(resolve => setImmediate(resolve))
+export const flushPromises = () => new Promise(resolve => setTimeout(resolve, 0))
 
 export const collect = (...vals) => [vals, ...vals]
 

@@ -8,7 +8,7 @@ import { flushPromises } from './test_helpers'
  * interested in; it passes its props to the child that it wraps. Without it, actions done with
  * `wrapper.setProps()` will not correctly pass along the props to the component that you're testing.
  */
-class FakeProvider extends React.Component {
+class FakeReduxProvider extends React.Component {
   render() {
     const { children, store, ...rest } = this.props // eslint-disable-line react/prop-types
     return (
@@ -19,15 +19,21 @@ class FakeProvider extends React.Component {
   }
 }
 
+/**
+ * Convenience wrapper to mount a component.
+ */
 export const setupMount = (Component, defaultProps) => (props = {}) => (
   mount(<Component {...defaultProps()} {...props} />)
 )
 
+/**
+ * Convenience wrapper to mount a Redux-connected component.
+ */
 export const setupMountReduxComponent = (Component, defaultProps) => (store, props = {}) => (
   mount(
-    <FakeProvider store={store}>
+    <FakeReduxProvider store={store}>
       <Component {...defaultProps()} {...props} />
-    </FakeProvider>,
+    </FakeReduxProvider>,
   )
 )
 
@@ -39,11 +45,18 @@ export const simulateClick = (wrapper, data) => (
   wrapper.simulate('click', { stopPropagation: sinon.stub(), ...data })
 )
 
-// Simulates a change event like those triggered by input DOM elements
+/**
+ * Simulates a change event like those triggered by input DOM elements
+ */
 export const simulateChange = (wrapper, value) => (
   wrapper.simulate('change', { target: { value } })
 )
 
+/**
+ * Simulates a press for react native tests. There is no built-in support for press events, so the system is hacked
+ * by simply walking up the tree until a component with an `onPress` property is found. Not the best, but better
+ * than nothing.
+ */
 export const simulatePress = (wrapper, data) => {
   const { onPress } = wrapper.props()
   if (onPress) {
@@ -69,6 +82,11 @@ export const mockComponent = (componentName, methods) => (
   }))
 )
 
+/**
+ * Helper function
+ * @param wrapper
+ * @returns {Promise<void>}
+ */
 export const reflush = async (wrapper) => {
   await flushPromises()
   wrapper.update()
