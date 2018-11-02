@@ -1,7 +1,7 @@
 {
   "name": "react-tdd",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
