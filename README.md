@@ -9,7 +9,11 @@ There's a two-fold purpose for `react-tdd`:
 
 # Helper Functions
 
-Available as a package under `react-tdd`.
+`react-tdd` packages a collection of [enzyme](https://github.com/airbnb/enzyme) helper functions that allow developers to write more declarative React tests.
+
+Install: `yarn add -D react-tdd`
+
+Usage: until some docs are written, just check out the comments in the source code!
 
 # Education
 
